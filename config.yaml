@@ -1,0 +1,83 @@
+analysis:
+  skip_extensions:
+    - ".class"
+    - ".jar"
+    - ".war"
+    - ".ear"
+    - ".zip"
+    - ".tar"
+    - ".gz"
+    - ".bin"
+    - ".exe"
+    - ".dll"
+    - ".so"
+    - ".dylib"
+    - ".png"
+    - ".jpg"
+    - ".gif"
+    - ".svg"
+    - ".ico"
+    - ".pdf"
+  skip_dirs:
+    - "target"
+    - "build"
+    - ".git"
+    - ".svn"
+    - "node_modules"
+    - ".idea"
+    - ".eclipse"
+    - "__pycache__"
+    - ".venv"
+    - "generated-sources"
+    - "generated"
+  boilerplate_annotations:
+    - "@Getter"
+    - "@Setter"
+    - "@Data"
+    - "@Builder"
+    - "@NoArgsConstructor"
+    - "@AllArgsConstructor"
+    - "@ToString"
+    - "@EqualsAndHashCode"
+  listener_annotations:
+    - "@JmsListener"
+    - "@MessageDriven"
+    - "@ActivationConfigProperty"
+  service_annotations:
+    - "@Service"
+    - "@Component"
+    - "@Stateless"
+    - "@Stateful"
+    - "@Singleton"
+  config_annotations:
+    - "@Configuration"
+    - "@Bean"
+    - "@ConfigurationProperties"
+
+llm:
+  max_tokens_per_call: 8192
+  batch_size: 5
+  confidence_threshold: 0.7
+
+embedding:
+  model: all-MiniLM-L6-v2
+  chunk_size: 512
+  chunk_overlap: 64
+
+neo4j:
+  database: neo4j
+
+qdrant:
+  collection_name: knowledge_base
+  vector_size: 384
+
+target:
+  cloud_options:
+    - name: "Azure — AKS + Azure Service Bus + Kafka"
+      description: "Managed Kubernetes with Azure Service Bus bridging to Kafka. Best if client is Azure-first."
+    - name: "GCP — GKE + Pub/Sub + Confluent Kafka"
+      description: "GKE with managed Confluent Kafka on GCP. Best if client is GCP-first."
+    - name: "Multi-cloud — Kubernetes + Apache Kafka (self-managed)"
+      description: "Cloud-agnostic. Kafka self-managed on any K8s. Maximum portability."
+  java_target_version: "17"
+  messaging_target: "kafka"
